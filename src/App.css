@@ -1,15 +1,68 @@
+/* h1 {
+  margin: 0;
+} */
 .App {
   text-align: center;
-}
-
-.App-content {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
+.App-content {
+  min-height: 100vh;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 2rem;
+  padding-top: 0;
+}
+
+.App-content a {
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  background-color: #191a1d;
+  color: white;
+  text-decoration: none;
+}
+
+.App-content img {
+  width: 200px;
+  height: auto;
+  border-radius: 15px;
+}
+
+.App-content caption {
+  /* width: 100%; */
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #acf;
+  font-weight: bold;
+  font-size: 1rem;
+  border-bottom: 2px solid #acf;
+  border-right: 2px solid #acf;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu a:hover {
+  background-color: rgba(170, 204, 255, 0.4);
+  color: white;
+}

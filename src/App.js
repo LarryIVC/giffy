@@ -1,21 +1,28 @@
-import { useState } from 'react';
+import { keyboard } from '@testing-library/user-event/dist/keyboard';
 import './App.css';
+import ListOfGifs from './components/ListOfGifs';
+import { Link, Route } from 'wouter';
 
-const INITIAL_VALUE = [
-  'https://media2.giphy.com/media/TObbUke0z8Mo/200.webp?cid=ecf05e4723w46d8cz68tpsh60rjxvch4wdvch3xxqglfosug&ep=v1_gifs_search&rid=200.webp&ct=g',
-  'https://media2.giphy.com/media/nntN4XMNwTzZ6/200.webp?cid=ecf05e4723w46d8cz68tpsh60rjxvch4wdvch3xxqglfosug&ep=v1_gifs_search&rid=200.webp&ct=g'
-];
 function App() {
-  const [value, setValue] = useState([INITIAL_VALUE]);
-  return (
-    <div className="App">
-      <section className="App-content">
-        {
-          value.map((gif, Index) => <img key={Index} src={gif} alt='Gif' />)
-        }
 
-      </section>
-    </div>
+  return (
+    <article className="App">
+      <h1>Giffy App</h1>
+      <nav className='menu'>
+        <ul>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/gif/bolivia'>Bolivia</Link></li>
+          <li><Link to='/gif/ecuador'>Ecuador</Link></li>
+          <li><Link to='/gif/chile'>Chile</Link></li>
+          <li><Link to='/gif/women'>Women</Link></li>
+        </ul>
+      </nav>
+
+      <Route path='/' >
+        <ListOfGifs params={{ keyword: 'random' }} />
+      </Route>
+      <Route path='/gif/:keyword' component={ListOfGifs} />
+    </article>
   );
 }
 
