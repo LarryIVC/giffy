@@ -1,10 +1,12 @@
+import './Gif.css'
+
 const Gif = ({ id, title, url }) => {
   return (
-    <a href={`/#${id}`} >
-      <picture key={id}>
+    <a href={`/#${id}`} className='card'>
+      <figure>
         <img src={url} alt={title} />
-        <caption>{title}</caption>
-      </picture>
+        <figcaption>{title}</figcaption>
+      </figure>
     </a>
   )
 }

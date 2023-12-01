@@ -1,0 +1,22 @@
+.menu ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #acf;
+  font-weight: bold;
+  font-size: 1rem;
+  border-bottom: 2px solid #acf;
+  border-right: 2px solid #acf;
+  padding: 0 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu a:hover {
+  background-color: rgba(170, 204, 255, 0.4);
+  color: white;
+}
