@@ -1,12 +1,14 @@
 import { createContext, useState } from "react";
 
-const GifContext = createContext()
+const GifsContext = createContext()
 
 export function GifProvider({ children }) {
-  // const [gifs, setGifs] = useState([])
+  const [gifs, setGifs] = useState([])
   return (
-    <GifContext.Provider >
+    <GifsContext.Provider value={{ gifs, setGifs }}>
       {children}
-    </GifContext.Provider>
+    </GifsContext.Provider>
   )
 }
+
+export default GifsContext;

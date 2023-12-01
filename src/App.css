@@ -18,3 +18,14 @@
   padding: 1rem;
   margin: 0 auto;
 }
+
+.search-input {
+  /* width: 100%; */
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  line-height: 1.5rem;
+  color: rgb(61, 60, 60);
+}

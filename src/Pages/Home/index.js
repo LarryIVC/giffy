@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, Route } from "wouter";
 import ListOfGifs from "../../components/ListOfGifs";
 import Menu from "../../components/Menu";
+import Detail from "../Details";
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
@@ -10,6 +11,7 @@ const Home = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setLocation(`/gif/${keyword}`);
+    e.value = '';    
   }
 
   const handleSearchChange = (e) => {
@@ -20,13 +22,14 @@ const Home = () => {
     <>
       <h1>Giffy App</h1>
       <form onSubmit={handleSearchSubmit}>
-        <input type='text' onChange={handleSearchChange} value={keyword} />
+        <input name='search' type='text' onChange={handleSearchChange} value={keyword} placeholder="Search gifs ..." className="search-input" />
       </form>
       <Menu />
       <Route path='/' >
         <ListOfGifs />
       </Route>
       <Route path='/gif/:keyword' component={ListOfGifs} />
+      <Route path='/detail/:id' component={Detail} />
     </>
   )
 }

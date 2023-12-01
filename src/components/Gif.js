@@ -1,13 +1,16 @@
+import { Link } from 'wouter'
 import './Gif.css'
 
 const Gif = ({ id, title, url }) => {
   return (
-    <a href={`/#${id}`} className='card'>
-      <figure>
-        <img src={url} alt={title} />
-        <figcaption>{title}</figcaption>
-      </figure>
-    </a>
+    <Link to={`/detail/${id}`} >
+      <section className='card'>
+        <figure>
+          <img src={url} alt={title} />
+          <figcaption>{title}</figcaption>
+        </figure>
+      </section>
+    </Link>
   )
 }
 
