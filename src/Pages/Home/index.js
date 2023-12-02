@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLocation, Route } from "wouter";
-import ListOfGifs from "../../components/ListOfGifs";
-import Menu from "../../components/Menu";
-import Detail from "../Details";
+import ListOfGifs from "components/ListOfGifs";
+import Menu from "components/Menu";
+import Detail from "Pages/Details";
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
@@ -11,7 +11,7 @@ const Home = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setLocation(`/gif/${keyword}`);
-    e.value = '';    
+    e.value = '';
   }
 
   const handleSearchChange = (e) => {

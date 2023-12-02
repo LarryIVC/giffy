@@ -1,6 +1,6 @@
 import Gif from './Gif'
 import Loader from './Loader'
-import { useGifs } from '../Hooks/useGifs'
+import { useGifs } from 'Hooks/useGifs'
 
 const ListOfGifs = ({ params }) => {
   if (params === undefined || params === null) {
