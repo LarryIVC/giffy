@@ -1,5 +1,5 @@
-import Gif from './Gif'
-import Loader from './Loader'
+import Gif from 'components/Gif'
+import Loader from 'components/Loader'
 import { useGifs } from 'Hooks/useGifs'
 
 const ListOfGifs = ({ params }) => {
@@ -7,7 +7,7 @@ const ListOfGifs = ({ params }) => {
     params = { keyword: null }
   }
   const { keyword } = params;
-  
+
   const { loading, gifs } = useGifs({ keyword })
 
   return (
