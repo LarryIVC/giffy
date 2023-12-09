@@ -24,12 +24,12 @@ const Home = () => {
       <form onSubmit={handleSearchSubmit}>
         <input name='search' type='text' onChange={handleSearchChange} value={keyword} placeholder="Search gifs ..." className="search-input" />
       </form>
-      <Menu />
       <Route path='/' >
         <ListOfGifs />
       </Route>
       <Route path='/gif/:keyword' component={ListOfGifs} />
       <Route path='/detail/:id' component={Detail} />
+      <Menu />
     </>
   )
 }
