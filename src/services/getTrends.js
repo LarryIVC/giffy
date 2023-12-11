@@ -6,7 +6,7 @@ const getTrends = () => {
     .then((res) => res.json())
     .then((response) => {
       const { data } = response;
-      console.log(data);
+      // console.log(data);
       return data.splice(0, 7);
     })
 }
