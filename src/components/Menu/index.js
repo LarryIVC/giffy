@@ -1,7 +1,8 @@
 import { Link } from 'wouter';
 import './Menu.css';
 import getTrends from 'services/getTrends'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import useNearScreen from 'Hooks/useNearScreen';
 
 const Menu = () => {
   const [trends, setTrends] = useState([])
@@ -30,32 +31,15 @@ const Menu = () => {
   )
 }
 
+
+
+
 const LazyMenu = () => {
-  const [show, setShow] = useState(false)
-  const elementRef = useRef()
 
-  useEffect(() => {
-
-    const onChange = (entries, observer) => {
-      const el = entries[0]
-      console.log(el.isIntersecting)
-      if (el.isIntersecting) {
-        setShow(true)
-        observer.disconnect()
-      }
-    }
-
-    const observer = new IntersectionObserver(onChange, {
-      rootMargin: '100px'
-    })
-
-    observer.observe(elementRef.current)
-
-    return () => observer.disconnect()
-  }, [show])
+  const {isNear, elementRef} = useNearScreen()
 
   return <section ref={elementRef} >
-    {show ? <Menu /> : null}
+    {isNear ? <Menu /> : null}
   </section>
 }
 
