@@ -16,7 +16,7 @@ const LazyMenu = () => {
 
   return <section ref={elementRef} >
     <Suspense fallback={<Loader />}>
-      {isNear ? <Menu /> : null}
+      {isNear ? <Menu /> : <Loader />}
     </Suspense>
   </section>
 }
