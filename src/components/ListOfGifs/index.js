@@ -1,6 +1,7 @@
 import Gif from 'components/Gif'
 import Loader from 'components/Loader'
 import { useGifs } from 'Hooks/useGifs'
+import './ListOfGifs.css'
 
 const ListOfGifs = ({ params }) => {
   if (params === undefined || params === null) {
@@ -8,7 +9,11 @@ const ListOfGifs = ({ params }) => {
   }
   const { keyword } = params;
 
-  const { loading, gifs } = useGifs({ keyword })
+  const { loading, gifs, setPage } = useGifs({ keyword })
+
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1)
+  }
 
   return (
     <section className="App-content">
@@ -18,6 +23,7 @@ const ListOfGifs = ({ params }) => {
             return (<Gif key={id} title={title} url={url} id={id} />)
           })
       }
+      <button onClick={handleNextPage} className='next-page'>Next Page</button>
     </section>
   )
 }
