@@ -1,0 +1,16 @@
+.next-page {
+  display: block;
+  background-color: #9cf;
+  border: 1px solid #9cf;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out, transform 0.1s ease-in-out;
+  outline: none;
+}
+
+.next-page:hover {
+  background-color: #333;
+  color: #9cf;
+}
