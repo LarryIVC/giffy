@@ -23,6 +23,7 @@ const Home = () => {
       <h1>Giffy App</h1>
       <form onSubmit={handleSearchSubmit}>
         <input name='search' type='text' onChange={handleSearchChange} value={keyword} placeholder="Search gifs ..." className="search-input" />
+        <input type='submit' value='Search' className="search-button" onClick={handleSearchSubmit}/>
       </form>
       <Menu />
       <Route path='/' >
