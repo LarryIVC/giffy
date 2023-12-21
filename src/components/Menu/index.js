@@ -1,5 +1,5 @@
 
-import useNearScreen from 'Hooks/useNearScreen';
+// import useNearScreen from 'Hooks/useNearScreen';
 // import Menu from './Menu';
 import './Menu.css';
 import { Suspense, lazy } from 'react';
@@ -12,13 +12,17 @@ const Menu = lazy(
 
 const LazyMenu = () => {
 
-  const { isNear, elementRef } = useNearScreen({ distance: '0px' })
+  // const { isNear, elementRef } = useNearScreen({ distance: '0px' })
+  // console.log(isNear)
 
-  return <section ref={elementRef} >
-    <Suspense fallback={<Loader />}>
-      {isNear ? <Menu /> : <Loader />}
-    </Suspense>
-  </section>
+  // return <section ref={elementRef} >
+  //   <Suspense fallback={<Loader />}>
+  //     {isNear ? <Menu /> : null}
+  //   </Suspense>
+  // </section>
+  return <Suspense fallback=<Loader /> >
+    <Menu />
+  </Suspense >
 }
 
 export default LazyMenu;
