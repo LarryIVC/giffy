@@ -31,7 +31,7 @@ const Home = () => {
       </Route>
       <Route path='/gif/:keyword' component={ListOfGifs} />
       <Route path='/detail/:id' component={Detail} />
-      <Menu />
+      {/* <Menu /> */}
     </>
   )
 }
