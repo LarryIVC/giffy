@@ -15,7 +15,6 @@ const Home = () => {
   }
 
   const handleSearchChange = (e) => {
-
     setKeyword(e.target.value);
   }
   return (
