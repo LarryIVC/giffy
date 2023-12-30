@@ -3,7 +3,8 @@ import Loader from 'components/Loader'
 import { useGifs } from 'Hooks/useGifs'
 import './ListOfGifs.css'
 import useNearScreen from 'Hooks/useNearScreen'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import debounce from 'just-debounce-it'
 
 const ListOfGifs = ({ params }) => {
   if (params === undefined || params === null) {
@@ -12,20 +13,16 @@ const ListOfGifs = ({ params }) => {
   const { keyword } = params;
   const externalRef = useRef()
   const { loading, gifs, setPage } = useGifs({ keyword })
-  const { isNear } = useNearScreen({ externalRef: loading ? null : externalRef })
+  const { isNear } = useNearScreen({ externalRef: loading ? null : externalRef, once: false })
 
-  const handleNextPage = () => {
-    console.log('Next Page')
-    setPage(prevPage => prevPage + 1)
-  }
-
-  // console.log(isNear)
-
-  // const handleNextPage = () => console.log('Next Page')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debounceHandleNextPage = useCallback(debounce(
+    () => setPage(prevPage => prevPage + 1), 300
+  ), [setPage]);
 
   useEffect(() => {
-    if (isNear) handleNextPage()
-  },[isNear])
+    if (isNear) debounceHandleNextPage();
+  }, [isNear, debounceHandleNextPage]);
 
   return (
     <section className="App-content">
