@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function useNearScreen({ distance = '0px', externalRef } = {}) {
+export default function useNearScreen({ distance = '0px', externalRef, once = true } = {}) {
   const [show, setShow] = useState(false)
   const elementRef = useRef()
   // console.log(elementRef)
@@ -14,7 +14,9 @@ export default function useNearScreen({ distance = '0px', externalRef } = {}) {
       // console.log(el.isIntersecting)
       if (el.isIntersecting) {
         setShow(true)
-        observer.disconnect()
+        once && observer.disconnect()
+      } else {
+        !once && setShow(false)
       }
     }
 
@@ -29,6 +31,6 @@ export default function useNearScreen({ distance = '0px', externalRef } = {}) {
       element && observer.observe(element)
     })
     return () => observer && observer.disconnect()
-  }, [distance, show, element])
+  }, [distance, show, element, once])
   return { isNear: show, elementRef }
 }
