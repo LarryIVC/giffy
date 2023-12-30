@@ -8,8 +8,11 @@ export const useGifs = ({ keyword }) => {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(INITIAL_PAGE);
   const [loadingPage, setLoadingPage] = useState(false);
+  // console.log('a',keyword)
   
   const currentKeyword = keyword || localStorage.getItem('lastKeyword') || 'panda';
+
+  // console.log('b',currentKeyword)
 
   const saveLocalStorage = (keyword) => {
     if (localStorage.getItem('lastKeyword') !== keyword){
@@ -20,13 +23,15 @@ export const useGifs = ({ keyword }) => {
 
   useEffect(() => {
     setLoading(true);
-    if (localStorage.getItem('lastKeyword') === keyword) return
+    // console.log('c',localStorage.getItem('lastKeyword'))
+    // console.log('d',currentKeyword)
+    // if (localStorage.getItem('lastKeyword') === currentKeyword) return
     getGifs({ keyword: currentKeyword }).then(gifs => {
       setGifs(gifs)
       setLoading(false);
-      saveLocalStorage(keyword)
+      saveLocalStorage(currentKeyword)
     });
-  }, [keyword, setGifs, currentKeyword]);
+  }, [setGifs, currentKeyword]);
 
   useEffect(() => {
     if (page === INITIAL_PAGE) return
