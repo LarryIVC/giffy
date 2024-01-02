@@ -9,16 +9,16 @@ export const useGifs = ({ keyword }) => {
   const [page, setPage] = useState(INITIAL_PAGE);
   const [loadingPage, setLoadingPage] = useState(false);
   // console.log('a',keyword)
-  
+
   const currentKeyword = keyword || localStorage.getItem('lastKeyword') || 'panda';
 
   // console.log('b',currentKeyword)
 
   const saveLocalStorage = (keyword) => {
-    if (localStorage.getItem('lastKeyword') !== keyword){
+    // if (localStorage.getItem('lastKeyword') !== keyword) {
       keyword && localStorage.setItem('lastKeyword', keyword);
-      setPage(INITIAL_PAGE);
-    }
+      // setPage(INITIAL_PAGE);
+    // }
   }
 
   useEffect(() => {
