@@ -1,5 +1,6 @@
 import { Link } from 'wouter'
 import './Gif.css'
+import { memo } from 'react'
 
 const Gif = ({ id, title, url }) => {
   // console.log (id, title, url)
@@ -15,4 +16,4 @@ const Gif = ({ id, title, url }) => {
   )
 }
 
-export default Gif;
+export default memo(Gif);
