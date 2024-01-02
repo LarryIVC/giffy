@@ -7,9 +7,11 @@ import { useCallback, useEffect, useRef } from 'react'
 import debounce from 'just-debounce-it'
 
 const ListOfGifs = ({ params }) => {
+  // console.log('params', params)
   if (params === undefined || params === null) {
     params = { keyword: null }
   }
+  // console.log('params', params)
   const { keyword } = params;
   const externalRef = useRef()
   const { loading, gifs, setPage } = useGifs({ keyword })
