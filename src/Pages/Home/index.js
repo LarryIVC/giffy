@@ -1,29 +1,21 @@
-import { useState } from "react";
 import { useLocation, Route } from "wouter";
 import ListOfGifs from "components/ListOfGifs";
 import Menu from "components/Menu";
 import Detail from "Pages/Details";
+import SearchForm from "components/SearchForm";
 
 const Home = () => {
-  const [keyword, setKeyword] = useState('');
   const setLocation = useLocation()[1];
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
+  const handleSearchSubmit = ({ keyword }) => {
+    console.log('keyword home', keyword)
     setLocation(`/gif/${keyword}`);
-    e.value = '';
   }
 
-  const handleSearchChange = (e) => {
-    setKeyword(e.target.value);
-  }
   return (
     <>
       <h1>Giffy App</h1>
-      <form onSubmit={handleSearchSubmit}>
-        <input name='search' type='text' onChange={handleSearchChange} value={keyword} placeholder="Search gifs ..." className="search-input" />
-        <input type='submit' value='Search' className="search-button" onClick={handleSearchSubmit}/>
-      </form>
+      <SearchForm onSubmit={handleSearchSubmit} />
       <Menu />
       <Route path='/' >
         <ListOfGifs />
