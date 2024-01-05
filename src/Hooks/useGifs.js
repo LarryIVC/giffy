@@ -16,8 +16,8 @@ export const useGifs = ({ keyword }) => {
 
   const saveLocalStorage = (keyword) => {
     // if (localStorage.getItem('lastKeyword') !== keyword) {
-      keyword && localStorage.setItem('lastKeyword', keyword);
-      // setPage(INITIAL_PAGE);
+    keyword && localStorage.setItem('lastKeyword', keyword);
+    // setPage(INITIAL_PAGE);
     // }
   }
 
@@ -46,5 +46,5 @@ export const useGifs = ({ keyword }) => {
 
   }, [page, currentKeyword, setGifs, keyword])
 
-  return { loading, gifs, setPage, loadingPage }
+  return { loading, gifs, setPage, loadingPage, title: currentKeyword }
 }
