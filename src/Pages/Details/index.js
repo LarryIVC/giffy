@@ -1,14 +1,16 @@
-import { useContext } from "react"
-import GifsContext from "context/GifContext"
 import Gif from "components/Gif"
 import './Details.css'
+import useSingleGif from "Hooks/useSingleGif"
+import Loader from "components/Loader"
+import { Redirect } from "wouter"
 
 const Detail = ({ params }) => {
   console.log(params.id)
-  const { gifs } = useContext(GifsContext)
-  // console.log(gifs)
-  const gif = gifs.find(gif => gif.id === params.id)
-  // console.log(gif)
+  
+  const { gif, isLoading, isError } = useSingleGif({ id: params.id })
+  console.log(isError)
+  if(isLoading) return <Loader />
+  if(isError) return <Redirect to='/404' />
 
   return (
     <section className="gif-detail-container">
