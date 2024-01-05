@@ -8,12 +8,12 @@ const Home = () => {
   const setLocation = useLocation()[1];
 
   const handleSearchSubmit = ({ keyword }) => {
-    console.log('keyword home', keyword)
+    // console.log('keyword home', keyword)
     setLocation(`/gif/${keyword}`);
   }
 
   return (
-    <>
+    <>      
       <h1>Giffy App</h1>
       <SearchForm onSubmit={handleSearchSubmit} />
       <Menu />
