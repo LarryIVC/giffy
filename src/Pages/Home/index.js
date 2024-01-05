@@ -22,6 +22,7 @@ const Home = () => {
       </Route>
       <Route path='/gif/:keyword' component={ListOfGifs} />
       <Route path='/detail/:id' component={Detail} />
+      <Route path='/404' component={() => <h2>Error 404 😯 </h2>} />
       {/* <Menu /> */}
     </>
   )
