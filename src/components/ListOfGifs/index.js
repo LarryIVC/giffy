@@ -5,6 +5,7 @@ import './ListOfGifs.css'
 import useNearScreen from 'Hooks/useNearScreen'
 import { useCallback, useEffect, useRef } from 'react'
 import debounce from 'just-debounce-it'
+import { Helmet } from 'react-helmet'
 
 const ListOfGifs = ({ params }) => {
   // console.log('params', params)
@@ -14,7 +15,7 @@ const ListOfGifs = ({ params }) => {
   // console.log('params', params)
   const { keyword } = params;
   const externalRef = useRef()
-  const { loading, gifs, setPage } = useGifs({ keyword })
+  const { loading, gifs, setPage, title } = useGifs({ keyword })
   const { isNear } = useNearScreen({ externalRef: loading ? null : externalRef, once: false })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -27,16 +28,22 @@ const ListOfGifs = ({ params }) => {
   }, [isNear, debounceHandleNextPage]);
 
   return (
-    <section className="App-content">
-      {
-        loading ? <Loader /> :
-          gifs.map(({ url, title, id }) => {
-            return (<Gif key={id} title={title} url={url} id={id} />)
-          })
-      }
-      <div id='visor' ref={externalRef}></div>
-      {/* <button onClick={handleNextPage} className='next-page'>Next Page</button> */}
-    </section>
+    <>
+      <Helmet>
+        <title>Giffy | {decodeURIComponent(title)}</title>
+        <meta name="description" content={`Giffy app your searcher favorite gif file | ${decodeURIComponent(keyword)}`} />
+      </Helmet>
+      <section className="App-content">
+        {
+          loading ? <Loader /> :
+            gifs.map(({ url, title, id }) => {
+              return (<Gif key={id} title={title} url={url} id={id} />)
+            })
+        }
+        <div id='visor' ref={externalRef}></div>
+        {/* <button onClick={handleNextPage} className='next-page'>Next Page</button> */}
+      </section>
+    </>
   )
 }
 
