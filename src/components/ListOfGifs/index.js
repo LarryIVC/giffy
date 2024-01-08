@@ -13,9 +13,10 @@ const ListOfGifs = ({ params }) => {
     params = { keyword: null }
   }
   // console.log('params', params)
-  const { keyword } = params;
+  const { keyword, rating } = params;
+  // console.log('rating', rating)
   const externalRef = useRef()
-  const { loading, gifs, setPage, title } = useGifs({ keyword })
+  const { loading, gifs, setPage, title } = useGifs({ keyword, rating })
   const { isNear } = useNearScreen({ externalRef: loading ? null : externalRef, once: false })
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
